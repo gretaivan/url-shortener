@@ -2,7 +2,7 @@ from werkzeug.exceptions import BadRequest
 import sqlite3
 import app
 
-def index(req):
+def all(req):
   urls = app.query_db('select * from urls;')
   return urls, 200
 
