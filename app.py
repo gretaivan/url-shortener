@@ -1,7 +1,8 @@
-from flask import Flask, g, render_template, request
+from flask import Flask, g, jsonify, render_template, request
 from flask_cors import CORS
 from werkzeug import exceptions
 import sqlite3
+from controllers import urls
 
 
 app = Flask(__name__)
@@ -14,6 +15,13 @@ def homepage():
     init_db()
     return render_template('home.html')
 
+@app.route("/aliases")
+def aliases(): 
+    fns = {
+            'GET': urls.all
+    }
+    resp, code = fns[request.method](request)
+    return render_template('all_urls.html', content=resp), code
 
 
 # DATABASE setup
