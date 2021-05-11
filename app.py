@@ -14,6 +14,8 @@ def homepage():
     init_db()
     return render_template('home.html')
 
+
+
 # DATABASE setup
 def get_db():
   db = getattr(g, '_database', None)
