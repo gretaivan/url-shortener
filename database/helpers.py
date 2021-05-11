@@ -1,18 +1,7 @@
-from flask import Flask
-from flask_cors import CORS
-from werkzeug import exceptions
+from app import app
 import sqlite3
 
-app = Flask(__name__)
-CORS(app)
-
 DATABASE = 'database/database.db'
-
-@app.route("/")
-def homepage(): 
-    init_db()
-    return "Welcome!"
-
 
 def get_db():
   db = getattr(g, '_database', None)
@@ -26,8 +15,3 @@ def init_db():
     with app.open_resource('schema.sql', mode='r') as f:
       db.cursor().executescript(f.read())
     db.commit()
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
