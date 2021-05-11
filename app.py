@@ -14,6 +14,8 @@ def homepage():
     init_db()
     return "Welcome!"
 
+
+
 # DATABASE setup
 def get_db():
   db = getattr(g, '_database', None)
