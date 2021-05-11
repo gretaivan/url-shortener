@@ -1,4 +1,4 @@
-from flask import Flask, g
+from flask import Flask, g, render_template, request
 from flask_cors import CORS
 from werkzeug import exceptions
 import sqlite3
@@ -12,7 +12,7 @@ DATABASE = 'database/database.db'
 @app.route("/")
 def homepage(): 
     init_db()
-    return "Welcome!"
+    return render_template('home.html')
 
 # DATABASE setup
 def get_db():
