@@ -10,9 +10,13 @@ CORS(app)
 
 DATABASE = 'database/database.db'
 
-@app.route("/")
-def homepage(): 
+@app.route("/", methods=['GET','POST'])
+def homepage():
+  if request.method == 'GET': 
     init_db()
+    return render_template('home.html')
+  elif request.method == 'POST':
+    response = urls.create(request)
     return render_template('home.html')
 
 @app.route("/aliases")
