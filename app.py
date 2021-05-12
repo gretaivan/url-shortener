@@ -1,4 +1,4 @@
-from flask import Flask, g, jsonify, render_template, redirect, request, url_for
+from flask import Flask, g, json, jsonify, render_template, redirect, request, url_for
 from flask_cors import CORS
 from werkzeug import exceptions
 import sqlite3
@@ -33,9 +33,12 @@ def aliases(alias=None):
     }
     if alias == None: 
       resp, code = fns[request.method](request)
+ 
       return render_template('all_urls.html', content=resp), code
     else:
-      return render_template('alias.html', alias=alias, title="")
+      response = urls.find_by_alias(alias)[0]
+      print(response)
+      return render_template('alias.html', alias=alias, title="", url_list=response)
   
   
 

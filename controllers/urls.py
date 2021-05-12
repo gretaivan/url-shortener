@@ -35,9 +35,9 @@ def find_by_url(url):
     raise BadRequest(f"The URL {url} does not exist")
 
 
-# def find_by_alias(alias):
-#   try:
-#     return app.query_db('select * from urls where alias_url = (?);', (alias,))
-#   except:
-#     raise BadRequest(f"The URL alias {alias} does not exist")
+def find_by_alias(alias):
+  try:
+    return app.query_db('select * from urls where alias_url = (?);', (alias,))
+  except:
+    raise BadRequest(f"The URL alias {alias} does not exist")
 
