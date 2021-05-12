@@ -1,4 +1,4 @@
-from flask import Flask, g, jsonify, render_template, request
+from flask import Flask, g, jsonify, render_template, redirect, request, url_for
 from flask_cors import CORS
 from werkzeug import exceptions
 import sqlite3
@@ -15,20 +15,24 @@ def homepage():
   if request.method == 'GET': 
     return render_template('home.html')
   elif request.method == 'POST':
-    response = urls.create(request)
-    return render_template('home.html')
+    response, code = urls.create(request)
+    if code == 201:
+      return render_template('home.html')
+    else: 
+      return redirect(url_for('aliases', alias=response))
 
 @app.route("/aliases")
-def aliases(): 
+@app.route("/aliases/<alias>", methods=['GET'])
+def aliases(alias=None): 
     fns = {
             'GET': urls.all
     }
-    resp, code = fns[request.method](request)
-    return render_template('all_urls.html', content=resp), code
-
-@app.route("/aliases/<alias>")
-def alias(alias):
-  return alias
+    if alias == None: 
+      resp, code = fns[request.method](request)
+      return render_template('all_urls.html', content=resp), code
+    else:
+      return render_template('alias.html', alias=alias)
+  
   
 
 # DATABASE setup

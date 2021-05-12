@@ -30,7 +30,7 @@ def create(req):
       return check_value, 201
     else:
       alias = exists[0][2]
-      return redirect(url_for('/',alias = alias))
+      return alias, 202
 
 def find_by_url(url):
   try:
