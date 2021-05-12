@@ -13,7 +13,6 @@ DATABASE = 'database/database.db'
 @app.route("/", methods=['GET','POST'])
 def homepage():
   if request.method == 'GET': 
-    init_db()
     return render_template('home.html')
   elif request.method == 'POST':
     response = urls.create(request)
@@ -27,6 +26,9 @@ def aliases():
     resp, code = fns[request.method](request)
     return render_template('all_urls.html', content=resp), code
 
+@app.route("/aliases/<alias>")
+def alias(alias):
+  
 
 # DATABASE setup
 def get_db():
@@ -56,6 +58,13 @@ def query_db(query, args=(), one=False):
   cur.close()
   return (rv[0] if rv else None) if one else rv
 
+def create_app():
+    app = Flask(__name__)
+    with app.app_context():
+        init_db()
+    return app
+
+create_app()
 
 
 
