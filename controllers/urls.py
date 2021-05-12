@@ -32,3 +32,4 @@ def create(req):
 #     return app.query_db('select * from urls where alias_url = (?);', (alias,))
 #   except:
 #     raise BadRequest(f"The URL alias {alias} does not exist")
+
