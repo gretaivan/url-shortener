@@ -14,6 +14,7 @@ def all(req):
 #   else:
 #     return fetch_result, 200
 
+
 def create(req):
     new_record = req.form['url']
     print(new_record)
