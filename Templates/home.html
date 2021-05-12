@@ -3,9 +3,9 @@
 {% block content %}
     <h1>URL Shortener</h1>
 
-    <form>
+    <form action='/' method='POST'>
       <label for="url">URL:</label>
-      <input type="text" id="url" placeholder="Enter your URL here...">
+      <input type="text" id="url" name="url" placeholder="Enter your URL here...">
       <input type="submit" id="submit_url" value="Submit">
     </form>
 
