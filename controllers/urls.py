@@ -1,4 +1,5 @@
 from werkzeug.exceptions import BadRequest
+from flask import request, jsonify
 import sqlite3
 import app
 
@@ -13,14 +14,19 @@ def all(req):
 #   else:
 #     return fetch_result, 200
 
-# def create(req):
-#     new_record = req.get_json()
-#     # found if actual url already exits
-#     if exists == []:
-#         alias = ""   # alias =  generate the alias url
-#         return_value = app.query_db('insert into urls (actual_url, alias_url) values (?, ?);', (new_record["url"], alias))
-#         check_value = app.query_db('select id from urls where name = (?);', (new_person["name"],))
-#         return check_value, 201
+
+def create(req):
+    new_record = req.form['url']
+    print(new_record)
+    # found if actual url already exits
+    # def exists():
+
+
+    # if exists:
+    #     alias = ""   # alias =  generate the alias url
+    #     return_value = app.query_db('insert into urls (actual_url, alias_url) values (?, ?);', (new_record["url"], alias))
+    #     check_value = app.query_db('select id from people where name = (?);', (new_person["name"],))
+    #     return check_value, 201
 
 # def find_by_alias(alias):
 #   try:
