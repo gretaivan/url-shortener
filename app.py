@@ -28,6 +28,7 @@ def aliases():
 
 @app.route("/aliases/<alias>")
 def alias(alias):
+  return alias
   
 
 # DATABASE setup
