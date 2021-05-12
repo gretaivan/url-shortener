@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>The url with alias</h1>
+
+    <table>
+        <tr>
+            <th>Actual URL</th> 
+            <th>Shortened URL</th>
+            <th>Created on</th>
+        </tr>
+        <tr>
+            <td>{{url_list[1]}}</td>
+            <td>short.io/{{alias}}</td>
+            <td>{{url_list[3]}}</td>
+        </tr>
+
+    </table>
+
+{% endblock content %}
