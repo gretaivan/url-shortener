@@ -15,7 +15,6 @@ def all(req):
 #   else:
 #     return fetch_result, 200
 
-
 def create(req):
     new_record = req.form['url']
     print(new_record)
@@ -31,7 +30,7 @@ def create(req):
       return check_value, 201
     else:
       alias = exists[0][2]
-      return redirect(url_for('/',alias = alias))
+      return alias, 202
 
 def find_by_url(url):
   try:
@@ -45,3 +44,4 @@ def find_by_url(url):
 #     return app.query_db('select * from urls where alias_url = (?);', (alias,))
 #   except:
 #     raise BadRequest(f"The URL alias {alias} does not exist")
+
