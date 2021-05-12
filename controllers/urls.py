@@ -19,7 +19,7 @@ def all(req):
 #     if exists == []:
 #         alias = ""   # alias =  generate the alias url
 #         return_value = app.query_db('insert into urls (actual_url, alias_url) values (?, ?);', (new_record["url"], alias))
-#         check_value = app.query_db('select id from people where name = (?);', (new_person["name"],))
+#         check_value = app.query_db('select id from urls where name = (?);', (new_person["name"],))
 #         return check_value, 201
 
 # def find_by_alias(alias):
