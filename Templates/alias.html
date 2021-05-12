@@ -3,6 +3,18 @@
 {% block content %}
     <h1>The url with alias</h1>
 
-    <p>short.io/{{alias}}</p>
+    <table>
+        <tr>
+            <th>Actual URL</th> 
+            <th>Shortened URL</th>
+            <th>Created on</th>
+        </tr>
+        <tr>
+            <td>URL</td>
+            <td>short.io/{{alias}}</td>
+            <td>Date</td>
+        </tr>
+
+    </table>
 
 {% endblock content %}

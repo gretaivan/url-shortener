@@ -17,12 +17,8 @@ def all(req):
 
 def create(req):
     new_record = req.form['url']
-    print(new_record)
-    
-    # found if actual url already exits
 
     exists = find_by_url(new_record)
-    print(exists)
     if exists == []:
       alias = url_shortener.generator()
       return_value = app.query_db('insert into urls (actual_url, alias_url) values (?, ?);', (new_record, alias))
